@@ -8,14 +8,14 @@ $("#Submit").click(function() {
     if (username.length == 0) {
         was = true;
         $("#username").addClass("is-invalid")
-        $(".rosso").text("Please enter a username")
+        $(".red").text("Please enter a username")
     } else if (username.length < 3) {
         was = true;
         $("#username").addClass("is-invalid")
-        $(".rosso").text("Please enter a valid username")
+        $(".red").text("Please enter a valid username")
     } else {
         if (was) {
-            $(".rosso").text("")
+            $(".red").text("")
             $("#username").removeClass("is-invalid")
             $("#username").addClass("was-validated")
             was = false
@@ -27,11 +27,19 @@ $("#Submit").click(function() {
             statusCode: {
                 404: function() {
                     $("#username").addClass("is-invalid")
-                    $(".rosso").text("Username not found")
+                    $(".red").text("Username not found")
                     was = true
                 }
+            },
+            error: function(error) {
+                was = true;
+                $(".red").text("Cannot find the server")
             }
         }).done(function(data) {
+            var custom;
+            var slim
+            if (data.textures.custom) { custom = "Yes" } else { custom = "No" }
+            if (data.textures.slim) { slim = "Yes" } else { slim = "No" }
             var result = "<p><strong>Username</strong>:" + username + "</p>"
             result += "<p><strong>Uuid</strong>:" + data.uuid + "</p>"
 
@@ -50,8 +58,8 @@ $("#Submit").click(function() {
                 })
                 result += '</p>'
             }
-            result += '<p><strong>Custom skin: </strong>' + data.textures.custom.toString().capitalize() + "</p>"
-            result += '<p><strong>Slim skin: </strong>' + data.textures.slim.toString().capitalize() + "</p>"
+            result += '<p><strong>Custom skin: </strong>' + custom + "</p>"
+            result += '<p><strong>Slim skin: </strong>' + slim + "</p>"
             if (data.textures.skin.url != undefined) {
                 result += '<a href="' + data.textures.skin.url + '" target="_blank"><button type="button" class="btn btn-primary">View skin</button> </a><br>'
             }
