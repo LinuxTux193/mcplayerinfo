@@ -67,8 +67,7 @@ $("#Submit").click(function() {
             result += '<br><button type="button" class="btn btn-primary" id="clear">Clear</button>'
             $("#result").html(result)
             $("#clear").click(function() {
-                $("#result").remove()
-                $(".margin").append('<div id="result"></div>')
+                $("#result").html("")
                 $("#username").val("")
             })
         })
