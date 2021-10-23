@@ -63,7 +63,7 @@ $("#Submit").click(function() {
                     } else {
                         result += '<tr >';
                         result += '<td >' + Username.username + '</td> ';
-                        result += '<td></td>';
+                        result += '<td>Primo username</td>';
                         result += '</tr>';
                     }
 
