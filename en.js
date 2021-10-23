@@ -29,6 +29,11 @@ $("#Submit").click(function() {
                     $("#username").addClass("is-invalid")
                     $(".red").text("Username not found")
                     was = true
+                },
+                400: function() {
+                    $("#username").addClass("is-invalid");
+                    $(".red").text("Request error");
+                    was = true;
                 }
             },
             error: function(error) {
@@ -48,7 +53,6 @@ $("#Submit").click(function() {
             }
             if (data.username_history.length > 1) {
                 result += '<p><strong>Username history:</strong><br>'
-
                 result += "<table class=\"table table-hover\">";
                 result += "<thead>"
                 result += "<tr>";

@@ -27,13 +27,18 @@ $("#Submit").click(function() {
             statusCode: {
                 404: function() {
                     $("#username").addClass("is-invalid")
-                    $(".red").text("Username non trovato")
+                    $(".red").text("Username " + username + " non trovato")
                     was = true
+                },
+                400: function() {
+                    $("#username").addClass("is-invalid");
+                    $(".red").text("Errore nella richiesta");
+                    was = true;
                 }
             },
             error: function(error) {
                 was = true;
-                $(".red").text("Impossibile raggiungere il server")
+                $(".red").text("Impossibile raggiungere il server");
             }
         }).done(function(data) {
             var custom;
