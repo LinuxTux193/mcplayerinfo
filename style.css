@@ -22,3 +22,12 @@ body {
     margin: 0 auto;
     float: none;
 }
+
+table th {
+    text-align: center;
+}
+
+.table {
+    margin: auto;
+    width: auto !important;
+}

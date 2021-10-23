@@ -48,15 +48,27 @@ $("#Submit").click(function() {
             }
             if (data.username_history.length > 1) {
                 result += '<p><strong>Storia degli username:</strong><br>'
+                result += "<table class=\"table table-hover\">";
+                result += "<thead>"
+                result += "<tr>";
+                result += "<th>Username</th>";
+                result += "<th>Cambiato il</th></thead>";
+                result += "<tbody>";
                 data.username_history.forEach(function(Username) {
                     if (Username.changed_at != undefined) {
-                        result += '<u>Username:</u> ' + Username.username + " <u>Cambiato il:</u> " + Username.changed_at.replace("Z", "").replace("T", " ") + '<em>' + +'</em>' + "<br>"
+                        result += "<tr>"
+                        result += '<td>' + Username.username + '</td> ';
+                        result += '<td>' + Username.changed_at.replace("Z", "").replace("T", " ") + '</td>';
+                        result += '</tr>';
                     } else {
-                        result += '<u>Username:</u> ' + Username.username + "<br>"
+                        result += '<tr >';
+                        result += '<td >' + Username.username + '</td> ';
+                        result += '<td></td>';
+                        result += '</tr>';
                     }
 
                 })
-                result += '</p>'
+                result += '</tbody></table><p></p>'
             }
             result += '<p><strong>Skin personalizzata: </strong>' + custom + "</p>"
             result += '<p><strong>Skin magra: </strong>' + slim + "</p>"
