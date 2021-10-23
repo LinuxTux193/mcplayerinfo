@@ -4,16 +4,16 @@ if (lang != null || lang != undefined) {
         var script = document.createElement("script");
         script.setAttribute("src", "it.js");
         document.body.appendChild(script);
-        $(".page-header").text("Ottieni informazioni su un giocatore di minecraft")
+        $(".page-header").text("Informazioni su un giocatore di minecraft")
         $("#Submit").html("Invia")
-        $("title").html("Ottieni informazioni su un giocatore di minecraft")
+        $("title").html("Informazioni su un giocatore di minecraft")
     } else {
         var script = document.createElement("script")
         script.setAttribute("src", "en.js");
         document.body.appendChild(script)
-        $(".page-header").text("Get informations about Minecraft player")
+        $(".page-header").text("Informations about Minecraft player")
         $("#Submit").html("Submit")
-        $("title").html("Get informations about Minecraft player")
+        $("title").html("Informations about Minecraft player")
     }
 } else {
     var script = document.createElement("script")
