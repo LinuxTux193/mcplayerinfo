@@ -2,7 +2,7 @@
 
 Website to get information about a minecraft player with Jquery and Bootstrap
 
-[Site]https://mcplayerinfo.glitch.me/
+[Site](https://mcplayerinfo.glitch.me/)
 
 With this website you can get a lot of information about a minecraft player, such as his skin or the history of name changes
 # Home
