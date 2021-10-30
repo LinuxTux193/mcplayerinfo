@@ -12,5 +12,5 @@ With this website you can get a lot of information about a minecraft player, suc
 
 # Contacts
 Email: antonio.bubba4@gmail.com  
-Telegram: @LinuxTux  
-Discord: LinuxTux01#1728  
+Telegram: [@LinuxTux](https://telegram.me/LinuxTux)
+Discord: [LinuxTux01#1728](https://discordapp.com/users/575385203908935682)
