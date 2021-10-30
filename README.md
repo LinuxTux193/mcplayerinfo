@@ -11,6 +11,6 @@ With this website you can get a lot of information about a minecraft player, suc
 ![image](https://user-images.githubusercontent.com/62654448/139532316-3e6f8cbb-6e24-4eb8-9d3f-05e5afd5a534.png)
 
 # Contacts
-Email: antonio.bubba4@gmail.com
-Telegram: @LinuxTux
-Discord: LinuxTux01#1728
+Email: antonio.bubba4@gmail.com  
+Telegram: @LinuxTux  
+Discord: LinuxTux01#1728  
