@@ -7,7 +7,7 @@ if (lang != null || lang != undefined) {
         $(".page-header").text("Informazioni su un giocatore di minecraft")
         $("#Submit").html("Invia")
         $("title").html("Informazioni su un giocatore di minecraft")
-        $(".modal-title").text("Comando copiato");
+        $(".modal-title").text("Comando copiato negli appunti");
         $("#close").text("Chiudi")
     } else {
         var script = document.createElement("script")
@@ -16,7 +16,7 @@ if (lang != null || lang != undefined) {
         $(".page-header").text("Informations about Minecraft player")
         $("#Submit").html("Submit")
         $("title").html("Informations about Minecraft player")
-        $(".modal-title").text("Command copied");
+        $(".modal-title").text("Command copied in the clipboard");
         $("#close").text("Close")
     }
 } else {
@@ -26,6 +26,6 @@ if (lang != null || lang != undefined) {
     $(".page-header").text("Informations about Minecraft player")
     $("#Submit").html("Submit")
     $("title").html("Informations about Minecraft player")
-    $(".modal-title").text("Command copied");
+    $(".modal-title").text("Command copied in the clipboard");
     $("#close").text("Close")
 }
