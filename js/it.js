@@ -3,6 +3,25 @@ String.prototype.capitalize = function() {
 }
 var was = false
 
+function copy(textToCopy) {
+    if (navigator.clipboard && window.isSecureContext) {
+        return navigator.clipboard.writeText(textToCopy);
+    } else {
+        let textArea = document.createElement("textarea");
+        textArea.value = textToCopy;
+        textArea.style.position = "fixed";
+        textArea.style.left = "-999999px";
+        textArea.style.top = "-999999px";
+        document.body.appendChild(textArea);
+        textArea.focus();
+        textArea.select();
+        return new Promise((res, rej) => {
+            document.execCommand('copy') ? res() : rej();
+            textArea.remove();
+        });
+    }
+}
+
 $("#Submit").click(function() {
     var username = $("#username").val();
     if (username.length == 0) {
@@ -89,7 +108,7 @@ $("#Submit").click(function() {
                 $("#username").val("")
             })
             $("#head").click(function() {
-                navigator.clipboard.writeText("/give @p minecraft:player_head{SkullOwner:" + username + "}")
+                copy("/give @p minecraft:player_head{SkullOwner:" + username + "}")
             })
         })
     }
