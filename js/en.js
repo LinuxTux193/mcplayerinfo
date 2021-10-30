@@ -42,12 +42,14 @@ $("#Submit").click(function() {
             }
         }).done(function(data) {
             var custom;
-            var slim
+            var slim;
+            var legacy;
             if (data.textures.custom) { custom = "Yes" } else { custom = "No" }
             if (data.textures.slim) { slim = "Yes" } else { slim = "No" }
+            if(data.legacy != undefined) {if(data.legacy){legacy = "Yes"} else {legacy = "No"}} else {legacy = "No"}
             var result = "<p><strong>Username</strong>:" + username + "</p>"
             result += "<p><strong>Uuid</strong>:" + data.uuid + "</p>"
-
+            result += "<p><strong>Legacy account</strong>: " + legacy + "</p>"
             if (data.created_at != null) {
                 result += "<p><strong>Created at: </strong>" + data.created_at + "</p>"
             }
