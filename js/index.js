@@ -23,9 +23,9 @@ if (lang != null || lang != undefined) {
     var script = document.createElement("script")
     script.setAttribute("src", "js/en.js");
     document.body.appendChild(script)
-    $(".page-header").text("Get informations about Minecraft player")
+    $(".page-header").text("Informations about Minecraft player")
     $("#Submit").html("Submit")
-    $("title").html("Get informations about Minecraft player")
+    $("title").html("Informations about Minecraft player")
     $(".modal-title").text("Command copied");
     $("#close").text("Close")
 }
