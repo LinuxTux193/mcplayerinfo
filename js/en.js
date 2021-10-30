@@ -60,6 +60,7 @@ $("#Submit").click(function() {
             var custom;
             var slim;
             var legacy;
+            username = data.username
             if (data.textures.custom) { custom = "Yes" } else { custom = "No" }
             if (data.textures.slim) { slim = "Yes" } else { slim = "No" }
             if (data.legacy != undefined) { if (data.legacy) { legacy = "Yes" } else { legacy = "No" } } else { legacy = "No" }
