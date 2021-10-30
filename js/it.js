@@ -99,7 +99,7 @@ $("#Submit").click(function() {
                 result += "<p><strong>Testa su minecraft</strong>: <code>/give @p minecraft:player_head{SkullOwner:" + username + '}</code> <button class="btn btn-primary" id="head" data-toggle="modal" data-target="#dialog">Copia</button><br>'
             }
             if (data.textures.skin.url != undefined) {
-                result += '<a href="' + data.textures.skin.url + '" target="_blank"><button type="button" class="btn btn-primary">Guarda skin</button> </a><br>'
+                result += '<a href="' + data.textures.skin.url + '" target="_blank"><button type="button" class="btn btn-primary">Vedi skin</button> </a><br>'
             }
             result += '<br><button type="button" class="btn btn-primary" id="clear">Pulisci</button>'
             $("#result").html(result)
