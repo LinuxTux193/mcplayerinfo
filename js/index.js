@@ -7,6 +7,8 @@ if (lang != null || lang != undefined) {
         $(".page-header").text("Informazioni su un giocatore di minecraft")
         $("#Submit").html("Invia")
         $("title").html("Informazioni su un giocatore di minecraft")
+        $(".modal-title").text("Comando copiato");
+        $("#close").text("Chiudi")
     } else {
         var script = document.createElement("script")
         script.setAttribute("src", "js/en.js");
@@ -14,6 +16,8 @@ if (lang != null || lang != undefined) {
         $(".page-header").text("Informations about Minecraft player")
         $("#Submit").html("Submit")
         $("title").html("Informations about Minecraft player")
+        $(".modal-title").text("Command copied");
+        $("#close").text("Close")
     }
 } else {
     var script = document.createElement("script")
@@ -22,4 +26,6 @@ if (lang != null || lang != undefined) {
     $(".page-header").text("Get informations about Minecraft player")
     $("#Submit").html("Submit")
     $("title").html("Get informations about Minecraft player")
+    $(".modal-title").text("Command copied");
+    $("#close").text("Close")
 }

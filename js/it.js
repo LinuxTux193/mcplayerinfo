@@ -46,11 +46,10 @@ $("#Submit").click(function() {
             var legacy;
             if (data.textures.custom) { custom = "Si" } else { custom = "No" }
             if (data.textures.slim) { slim = "Si" } else { slim = "No" }
-            if(data.legacy != undefined) {if(data.legacy){legacy = "Si"} else {legacy = "No"}} else {legacy = "No"}
+            if (data.legacy != undefined) { if (data.legacy) { legacy = "Si" } else { legacy = "No" } } else { legacy = "No" }
             var result = "<p><strong>Username </strong>: " + username + "</p>"
             result += "<p><strong>Uuid</strong>: " + data.uuid + "</p>"
             result += "<p><strong>Account legacy: </strong>" + legacy + "</p>"
-
             if (data.created_at != null) {
                 result += "<p><strong>Creato il </strong>:" + data.created_at + "</p>"
             }
@@ -74,21 +73,23 @@ $("#Submit").click(function() {
                         result += '<td>Primo username</td>';
                         result += '</tr>';
                     }
-
                 })
                 result += '</tbody></table><p></p>'
             }
             result += '<p><strong>Skin personalizzata</strong>: ' + custom + "</p>"
             result += '<p><strong>Skin magra</strong>: ' + slim + "</p>"
+            result += "<p><strong>Testa su minecraft</strong>: <code>/give @p minecraft:player_head{SkullOwner:" + username + '}</code> <button class="btn btn-primary" id="head" data-toggle="modal" data-target="#dialog">Copia</button><br>'
             if (data.textures.skin.url != undefined) {
                 result += '<a href="' + data.textures.skin.url + '" target="_blank"><button type="button" class="btn btn-primary">Guarda skin</button> </a><br>'
             }
-
             result += '<br><button type="button" class="btn btn-primary" id="clear">Pulisci</button>'
             $("#result").html(result)
             $("#clear").click(function() {
                 $("#result").html("")
                 $("#username").val("")
+            })
+            $("#head").click(function() {
+                navigator.clipboard.writeText("/give @p minecraft:player_head{SkullOwner:" + username + "}")
             })
         })
     }

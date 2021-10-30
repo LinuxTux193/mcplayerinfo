@@ -46,7 +46,7 @@ $("#Submit").click(function() {
             var legacy;
             if (data.textures.custom) { custom = "Yes" } else { custom = "No" }
             if (data.textures.slim) { slim = "Yes" } else { slim = "No" }
-            if(data.legacy != undefined) {if(data.legacy){legacy = "Yes"} else {legacy = "No"}} else {legacy = "No"}
+            if (data.legacy != undefined) { if (data.legacy) { legacy = "Yes" } else { legacy = "No" } } else { legacy = "No" }
             var result = "<p><strong>Username</strong>:" + username + "</p>"
             result += "<p><strong>Uuid</strong>:" + data.uuid + "</p>"
             result += "<p><strong>Legacy account</strong>: " + legacy + "</p>"
@@ -73,21 +73,23 @@ $("#Submit").click(function() {
                         result += '<td>First username</td>';
                         result += '</tr>';
                     }
-
                 })
                 result += '</tbody></table><p></p>'
             }
             result += '<p><strong>Custom skin: </strong>' + custom + "</p>"
             result += '<p><strong>Slim skin: </strong>' + slim + "</p>"
+            result += "<p><strong>Minecraft head</strong>: <code>/give @p minecraft:player_head{SkullOwner:" + username + '}</code> <button class="btn btn-primary" id="head" data-toggle="modal" data-target="#dialog">Copy</button><br>'
             if (data.textures.skin.url != undefined) {
                 result += '<a href="' + data.textures.skin.url + '" target="_blank"><button type="button" class="btn btn-primary">View skin</button> </a><br>'
             }
-
             result += '<br><button type="button" class="btn btn-primary" id="clear">Clear</button>'
             $("#result").html(result)
             $("#clear").click(function() {
                 $("#result").html("")
                 $("#username").val("")
+            })
+            $("#head").click(function() {
+                navigator.clipboard.writeText("/give @p minecraft:player_head{SkullOwner:" + username + "}")
             })
         })
     }
