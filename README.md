@@ -8,7 +8,7 @@ With this website you can get a lot of information about a minecraft player, suc
 # Home
 ![image](https://user-images.githubusercontent.com/62654448/138551860-7c4c44d7-2647-496f-ac5b-6c3304724eab.png)
 # Search username
-![image](https://user-images.githubusercontent.com/62654448/138551856-66d998d3-9ecb-41a6-bc9d-229b1a49127e.png)
+![image](https://user-images.githubusercontent.com/62654448/139525807-b66c2718-9467-491e-9dac-6abf24cf6714.png)
 
 # For donations
 Btc 36ti2NwDow7ygby3zvzFXC8bR2JDYFfVGA
