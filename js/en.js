@@ -28,12 +28,8 @@ $("#Submit").click(function() {
     if (username.length == 0) {
         was = true;
         $("#username").addClass("is-invalid")
-        $(".red").text("Please enter a username")
-    } else if (username.length < 3) {
-        was = true;
-        $("#username").addClass("is-invalid")
-        $(".red").text("Please enter a valid username")
-    } else {
+        $(".red").text("Please enter a username/uuid")
+    }  else {
         if (was) {
             $(".red").text("")
             $("#username").removeClass("is-invalid")
@@ -47,7 +43,7 @@ $("#Submit").click(function() {
             statusCode: {
                 404: function() {
                     $("#username").addClass("is-invalid")
-                    $(".red").text("Username not found")
+                    $(".red").text("Username/uuid not found")
                     was = true
                 },
                 400: function() {
