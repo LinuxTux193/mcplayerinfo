@@ -6,9 +6,9 @@ Website to get information about a minecraft player with Jquery and Bootstrap
 
 With this website you can get a lot of information about a minecraft player, such as his skin or the history of name changes
 # Home
-![image](https://user-images.githubusercontent.com/62654448/139525908-89086442-a4e2-43ce-ad1b-126a1c6bdb44.png)
+![image](https://user-images.githubusercontent.com/62654448/139532308-b1dffe33-a538-4759-aea5-2015ce2d7fb8.png)
 # Search username
-![image](https://user-images.githubusercontent.com/62654448/139525893-9c8c8600-dd99-4ab2-8986-34081a0960f8.png)
+![image](https://user-images.githubusercontent.com/62654448/139532316-3e6f8cbb-6e24-4eb8-9d3f-05e5afd5a534.png)
 
 # For donations
 Btc 36ti2NwDow7ygby3zvzFXC8bR2JDYFfVGA
