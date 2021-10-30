@@ -95,11 +95,11 @@ $("#Submit").click(function() {
             }
             result += '<p><strong>Custom skin: </strong>' + custom + "</p>"
             result += '<p><strong>Slim skin: </strong>' + slim + "</p>"
-            if (!/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
+            if (!/iPhone|Kindle|iPad|iPod|Android/i.test(navigator.userAgent)) {
                 result += "<p><strong>Minecraft head</strong>: <code>/give @p minecraft:player_head{SkullOwner:" + username + '}</code> <button class="btn btn-primary" id="head" data-toggle="modal" data-target="#dialog">Copy</button><br>'
             }
             if (data.textures.skin.url != undefined) {
-                result += '<a href="' + data.textures.skin.url + '" target="_blank"><button type="button" class="btn btn-primary">View skin</button> </a><br>'
+                result += '<a href="' + data.textures.skin.url + '" target="_blank"><button type="button" class="btn btn-primary">View skin</button> </a><br><br>'
             }
             if(data.textures.cape.url != undefined) {
                 result += '<a href="' + data.textures.cape.url + '" target="_blank"><button type="button" class="btn btn-primary">View cape</button> </a><br>'
