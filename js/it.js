@@ -29,7 +29,7 @@ $("#Submit").click(function() {
         was = true;
         $("#username").addClass("is-invalid")
         $(".red").text("Perfavore inserisci un username/uuid")
-    }  else {
+    } else {
         if (was) {
             $(".red").text("")
             $("#username").removeClass("is-invalid")
@@ -101,7 +101,7 @@ $("#Submit").click(function() {
             if (data.textures.skin.url != undefined) {
                 result += '<a href="' + data.textures.skin.url + '" target="_blank"><button type="button" class="btn btn-primary">Vedi skin</button> </a><br><br>'
             }
-            if(data.textures.cape.url != undefined) {
+            if (data.textures.cape != undefined) {
                 result += '<a href="' + data.textures.cape.url + '" target="_blank"><button type="button" class="btn btn-primary">Vedi mantello</button> </a><br>'
             }
             result += '<br><button type="button" class="btn btn-primary" id="clear">Pulisci</button>'

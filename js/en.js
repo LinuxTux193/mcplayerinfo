@@ -101,7 +101,7 @@ $("#Submit").click(function() {
             if (data.textures.skin.url != undefined) {
                 result += '<a href="' + data.textures.skin.url + '" target="_blank"><button type="button" class="btn btn-primary">View skin</button> </a><br><br>'
             }
-            if(data.textures.cape.url != undefined) {
+            if(data.textures.cape != undefined) {
                 result += '<a href="' + data.textures.cape.url + '" target="_blank"><button type="button" class="btn btn-primary">View cape</button> </a><br>'
             }
             result += '<br><button type="button" class="btn btn-primary" id="clear">Clear</button>'
