@@ -96,7 +96,7 @@ $("#Submit").click(function() {
             result += '<p><strong>Skin personalizzata</strong>: ' + custom + "</p>"
             result += '<p><strong>Skin magra</strong>: ' + slim + "</p>"
             if (!/iPhone|Kindle|iPad|iPod|Android/i.test(navigator.userAgent)) {
-                result += "<p><strong>Testa su minecraft</strong>: <code>/give @p minecraft:player_head{SkullOwner:" + username + '}</code> <button class="btn btn-primary" id="head" data-toggle="modal" data-target="#dialog">Copia</button><br>'
+                result += "<p><strong>Testa su minecraft</strong>:<br> <code>/give @p minecraft:player_head{SkullOwner:" + username + '}</code> <button class="btn btn-primary" id="head" data-toggle="modal" data-target="#dialog">Copia</button><br>'
             }
             if (data.textures.skin.url != undefined) {
                 result += '<a href="' + data.textures.skin.url + '" target="_blank"><button type="button" class="btn btn-primary">Vedi skin</button> </a><br><br>'
