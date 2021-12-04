@@ -3,6 +3,22 @@ String.prototype.capitalize = function() {
 }
 var was = false
 
+function forceDownload(url, fileName) {
+    var xhr = new XMLHttpRequest();
+    xhr.open("GET", url, true);
+    xhr.responseType = "blob";
+    xhr.onload = function() {
+        var urlCreator = window.URL || window.webkitURL;
+        var imageUrl = urlCreator.createObjectURL(this.response);
+        var tag = document.createElement('a');
+        tag.href = imageUrl;
+        tag.download = fileName;
+        document.body.appendChild(tag);
+        tag.click();
+        document.body.removeChild(tag);
+    }
+    xhr.send();
+}
 
 function copy(textToCopy) {
     if (navigator.clipboard && window.isSecureContext) {
@@ -61,10 +77,14 @@ $("#Submit").click(function() {
             var slim;
             var legacy;
             username = data.username
+
             if (data.textures.custom) { custom = "Si" } else { custom = "No" }
             if (data.textures.slim) { slim = "Si" } else { slim = "No" }
             if (data.legacy != undefined) { if (data.legacy) { legacy = "Si" } else { legacy = "No" } } else { legacy = "No" }
-            var result = "<p><strong>Username </strong>: " + username + "</p>"
+            var result = "";
+            result += '<canvas id="skin_container"></canvas><br>'
+
+            result += "<p><strong>Username </strong>: " + username + "</p>"
             result += "<p><strong>Uuid</strong>: " + data.uuid + "</p>"
             result += "<p><strong>Account legacy: </strong>" + legacy + "</p>"
             if (data.created_at != null) {
@@ -93,25 +113,43 @@ $("#Submit").click(function() {
                 })
                 result += '</tbody></table><p></p>'
             }
+
             result += '<p><strong>Skin personalizzata</strong>: ' + custom + "</p>"
             result += '<p><strong>Skin magra</strong>: ' + slim + "</p>"
-            if (!/iPhone|Kindle|iPad|iPod|Android/i.test(navigator.userAgent)) {
-                result += "<p><strong>Testa su minecraft</strong>:<br> <code>/give @p minecraft:player_head{SkullOwner:" + username + '}</code> <button class="btn btn-primary" id="head" data-toggle="modal" data-target="#dialog">Copia</button><br>'
-            }
             if (data.textures.skin.url != undefined) {
-                result += '<a href="' + data.textures.skin.url + '" target="_blank"><button type="button" class="btn btn-primary">Vedi skin</button> </a><br><br>'
+                result += '<button class="btn btn-primary" id="downloadskin">Scarica skin</button><br><br>'
             }
             if (data.textures.cape != undefined) {
-                result += '<a href="' + data.textures.cape.url + '" target="_blank"><button type="button" class="btn btn-primary">Vedi mantello</button> </a><br>'
+                result += '<button class="btn btn-primary" id="downloadcape">Scarica mantello</button><br><br>'
+            }
+            if (!/iPhone|Kindle|iPad|iPod|Android/i.test(navigator.userAgent)) {
+                result += '<button id="head" data-toggle="modal" data-target="#dialog" class="btn btn-primary">Copia comando per la testa</button><br>'
             }
             result += '<br><button type="button" class="btn btn-primary" id="clear">Pulisci</button>'
             $("#result").html(result)
+            let skinViewer = new skinview3d.SkinViewer({
+                canvas: document.getElementById("skin_container"),
+                width: 300,
+                height: 400,
+                skin: "https://cors-anywhere.herokuapp.com/" + data.textures.skin.url
+            });
+            if (data.textures.cape != undefined) {
+                skinViewer.loadCape("https://cors-anywhere.herokuapp.com/" + data.textures.cape.url)
+            }
+            skinViewer.animations.add(skinview3d.WalkingAnimation);
+            skinViewer.animations.add(skinview3d.RotatingAnimation);
             $("#clear").click(function() {
                 $("#result").html("")
                 $("#username").val("")
             })
             $("#head").click(function() {
                 copy("/give @p minecraft:player_head{SkullOwner:" + username + "}")
+            })
+            $("#downloadskin").click(function() {
+                forceDownload("https://cors-anywhere.herokuapp.com/" + data.textures.skin.url, data.username + " skin.png")
+            })
+            $("#downloadcape").click(function() {
+                forceDownload("https://cors-anywhere.herokuapp.com/" + data.textures.cape.url, data.username + " mantello.png")
             })
         })
     }

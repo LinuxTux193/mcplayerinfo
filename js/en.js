@@ -3,6 +3,22 @@ String.prototype.capitalize = function() {
 }
 var was = false
 
+function forceDownload(url, fileName) {
+    var xhr = new XMLHttpRequest();
+    xhr.open("GET", url, true);
+    xhr.responseType = "blob";
+    xhr.onload = function() {
+        var urlCreator = window.URL || window.webkitURL;
+        var imageUrl = urlCreator.createObjectURL(this.response);
+        var tag = document.createElement('a');
+        tag.href = imageUrl;
+        tag.download = fileName;
+        document.body.appendChild(tag);
+        tag.click();
+        document.body.removeChild(tag);
+    }
+    xhr.send();
+}
 
 function copy(textToCopy) {
     if (navigator.clipboard && window.isSecureContext) {
@@ -29,7 +45,7 @@ $("#Submit").click(function() {
         was = true;
         $("#username").addClass("is-invalid")
         $(".red").text("Please enter a username/uuid")
-    }  else {
+    } else {
         if (was) {
             $(".red").text("")
             $("#username").removeClass("is-invalid")
@@ -61,17 +77,21 @@ $("#Submit").click(function() {
             var slim;
             var legacy;
             username = data.username
+
             if (data.textures.custom) { custom = "Yes" } else { custom = "No" }
             if (data.textures.slim) { slim = "Yes" } else { slim = "No" }
             if (data.legacy != undefined) { if (data.legacy) { legacy = "Yes" } else { legacy = "No" } } else { legacy = "No" }
-            var result = "<p><strong>Username</strong>:" + username + "</p>"
-            result += "<p><strong>Uuid</strong>:" + data.uuid + "</p>"
-            result += "<p><strong>Legacy account</strong>: " + legacy + "</p>"
+            var result = "";
+            result += '<canvas id="skin_container"></canvas><br>'
+
+            result += "<p><strong>Username </strong>: " + username + "</p>"
+            result += "<p><strong>Uuid</strong>: " + data.uuid + "</p>"
+            result += "<p><strong>Legacy account: </strong>" + legacy + "</p>"
             if (data.created_at != null) {
-                result += "<p><strong>Created at: </strong>" + data.created_at + "</p>"
+                result += "<p><strong>Created at </strong>:" + data.created_at + "</p>"
             }
             if (data.username_history.length > 1) {
-                result += '<p><strong>Username history:</strong><br>'
+                result += '<p><strong>Username history</strong></p>'
                 result += "<table class=\"table table-hover\">";
                 result += "<thead>"
                 result += "<tr>";
@@ -93,25 +113,43 @@ $("#Submit").click(function() {
                 })
                 result += '</tbody></table><p></p>'
             }
-            result += '<p><strong>Custom skin: </strong>' + custom + "</p>"
-            result += '<p><strong>Slim skin: </strong>' + slim + "</p>"
-            if (!/iPhone|Kindle|iPad|iPod|Android/i.test(navigator.userAgent)) {
-                result += "<p><strong>Minecraft head</strong>: <br><code>/give @p minecraft:player_head{SkullOwner:" + username + '}</code> <button class="btn btn-primary" id="head" data-toggle="modal" data-target="#dialog">Copy</button><br>'
-            }
+
+            result += '<p><strong>Custom skin</strong>: ' + custom + "</p>"
+            result += '<p><strong>Slim skin</strong>: ' + slim + "</p>"
             if (data.textures.skin.url != undefined) {
-                result += '<a href="' + data.textures.skin.url + '" target="_blank"><button type="button" class="btn btn-primary">View skin</button> </a><br><br>'
+                result += '<button class="btn btn-primary" id="downloadskin">Download skin</button><br><br>'
             }
-            if(data.textures.cape != undefined) {
-                result += '<a href="' + data.textures.cape.url + '" target="_blank"><button type="button" class="btn btn-primary">View cape</button> </a><br>'
+            if (data.textures.cape != undefined) {
+                result += '<button class="btn btn-primary" id="downloadcape">Download cape</button><br><br>'
+            }
+            if (!/iPhone|Kindle|iPad|iPod|Android/i.test(navigator.userAgent)) {
+                result += '<button id="head" data-toggle="modal" data-target="#dialog" class="btn btn-primary">Copy command for the head</button><br>'
             }
             result += '<br><button type="button" class="btn btn-primary" id="clear">Clear</button>'
             $("#result").html(result)
+            let skinViewer = new skinview3d.SkinViewer({
+                canvas: document.getElementById("skin_container"),
+                width: 300,
+                height: 400,
+                skin: "https://cors-anywhere.herokuapp.com/" + data.textures.skin.url
+            });
+            if (data.textures.cape != undefined) {
+                skinViewer.loadCape("https://cors-anywhere.herokuapp.com/" + data.textures.cape.url)
+            }
+            skinViewer.animations.add(skinview3d.WalkingAnimation);
+            skinViewer.animations.add(skinview3d.RotatingAnimation);
             $("#clear").click(function() {
                 $("#result").html("")
                 $("#username").val("")
             })
             $("#head").click(function() {
                 copy("/give @p minecraft:player_head{SkullOwner:" + username + "}")
+            })
+            $("#downloadskin").click(function() {
+                forceDownload("https://cors-anywhere.herokuapp.com/" + data.textures.skin.url, data.username + " skin.png")
+            })
+            $("#downloadcape").click(function() {
+                forceDownload("https://cors-anywhere.herokuapp.com/" + data.textures.cape.url, data.username + " mantello.png")
             })
         })
     }
