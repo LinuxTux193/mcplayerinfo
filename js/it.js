@@ -122,9 +122,7 @@ $("#Submit").click(function() {
             if (data.textures.cape != undefined) {
                 result += '<button class="btn btn-primary" id="downloadcape">Scarica mantello</button><br><br>'
             }
-            if (!/iPhone|Kindle|iPad|iPod|Android/i.test(navigator.userAgent)) {
-                result += '<button id="head" data-toggle="modal" data-target="#dialog" class="btn btn-primary">Copia comando per la testa</button><br>'
-            }
+            result += '<button id="head" data-toggle="modal" data-target="#dialog" class="btn btn-primary">Copia comando per la testa</button><br>'
             result += '<br><button type="button" class="btn btn-primary" id="clear">Pulisci</button>'
             $("#result").html(result)
             let skinViewer = new skinview3d.SkinViewer({
