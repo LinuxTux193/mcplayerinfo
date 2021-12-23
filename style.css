@@ -31,3 +31,12 @@ table th {
     margin: auto;
     width: auto !important;
 }
+
+.controls {
+    display: inline-block;
+    display: inline;
+}
+
+.controls input {
+    margin: .4rem;
+}
