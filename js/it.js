@@ -79,7 +79,7 @@ $("#Submit").click(function() {
                 },
                 400: function() {
                     $("#username").addClass("is-invalid");
-                    $(".red").text("Errore nella richiesta");
+                    $(".red").text("Username/uuid non trovato");
                     was = true;
                 }
             },

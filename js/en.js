@@ -80,7 +80,7 @@ $("#Submit").click(function() {
                 },
                 400: function() {
                     $("#username").addClass("is-invalid");
-                    $(".red").text("Error in request");
+                    $(".red").text("Username/uuid not found");
                     was = true;
                 }
             },
