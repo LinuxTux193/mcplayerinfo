@@ -12,10 +12,14 @@
     margin-left: 12px;
 }
 
-#body {
+#container {
     text-align: center;
     align: center;
     align-items: center;
+}
+
+.center {
+    text-align: center;
 }
 
 .input {

@@ -60,7 +60,7 @@ $("#Submit").click(function() {
     if (username.length == 0) {
         was = true;
         $("#username").addClass("is-invalid");
-        $(".red").text("Perfavore inserisci un username/uuid");
+        $(".red").text("Please insert an username/uuid");
     } else {
         if (was) {
             $(".red").text("");
